@@ -4,10 +4,52 @@ version: 2.1
 orbs:
   # Declare a dependency on the welcome-orb
   welcome: circleci/welcome-orb@0.4.1
+
+executors:
+  my-executor:
+    docker:
+      - image: gcc:8.2
+    working_directory: /build
+  
+  
+# Define the jobs we want to run for this project
+jobs:
+  compile:
+    executor: my-executor
+    docker:
+      - image: gcc:8.2
+    steps:
+      - checkout
+      - run: mkdir testing
+      - run: gcc Tests.c -o Tests -lm
+      - run: mv Tests testing
+      
+      - persist_to_workspace:
+          root: testing
+          paths:
+            - Tests
+        
+
+  test:
+    executor: my-executor
+    docker:
+      - image: gcc:8.2
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /build/testing
+          
+      - run: ./testing/Tests
+
+          
 # Orchestrate or schedule a set of jobs
 workflows:
-  # Name the workflow "welcome"
-  welcome:
-    # Run the welcome/run job in its own container
+
+  compile_and_test:
     jobs:
+      - compile
+      - test:
+          requires: 
+            - compile
       - welcome/run
+
