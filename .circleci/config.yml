@@ -16,7 +16,6 @@ executors:
 jobs:
   compile:
     executor: my-executor
-    parallelism: 2
     docker:
       - image: gcc:8.2
     steps:
@@ -33,7 +32,6 @@ jobs:
 
   test:
     executor: my-executor
-    parallelism: 2
     docker:
       - image: gcc:8.2
     steps:
