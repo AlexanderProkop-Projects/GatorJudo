@@ -1,6 +1,9 @@
 <?php 
-if(1==1)
+try
 {
-    ThrowError();
+    if(1!=1)
+    {
+        throw new Exception();
+    }
 }
 ?> 
