@@ -1,9 +1,4 @@
 <?php 
-try
-{
-    if(1==1)
-    {
-        throw new Exception();
-    }
-}
+if(1==2)
+    exit("please fail CircleCI");
 ?> 
