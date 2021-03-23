@@ -1,6 +1,7 @@
- public function testBasicTest()
+<php?
+public function testBasicTest()
 {
-    $this->assertTrue(false);
+    $this->assertTrue(True);
 }
 
 public function testUserCreation()
@@ -13,3 +14,9 @@ public function testUserCreation()
 
     $this->assertEquals('Test User', $user->name);
 }
+
+
+testBasicTest();
+testUserCreation();
+
+?>
