@@ -1,7 +1,7 @@
 <php?
 public function testBasicTest()
 {
-    $this->assertTrue(True);
+    $this->assertTrue(False);
 }
 
 public function testUserCreation()
