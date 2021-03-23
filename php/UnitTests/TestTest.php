@@ -1,5 +1,5 @@
 <?php
 
-assertTrue(False);
+assertTrue(True);
 
 ?>
