@@ -1,5 +1,6 @@
 <php?
 
 assertTrue(False);
+tsijafoidasjf();
 
 ?>
