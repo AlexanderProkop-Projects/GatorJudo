@@ -16,4 +16,4 @@ jobs:
       - checkout
       - run:
           name: Run Unit Test
-          command: ls
+          command: php php/UnitTests/TestTest.php
