@@ -4,7 +4,7 @@
 
         <div class="container">
             <div class="navbar">
-                <img src="images/logo.png" class="logo">
+                <img src="../html/images/logo.png" class="logo">
                 <nav>
                     <ul>
                         <li><a href="">Home</a></li>
@@ -17,6 +17,14 @@
 
         </div>
 
+		<table> <!-- This is a table that will hold the php announcements -->
+			<tr>
+				<th>ANOUNCEMENT TITLE</th>
+				<th>ANNOUNCEMENT CONTENT</th>
+				<th>ANNOUNCEMENT AUTHOR</th>
+			</tr>
+			<?php displayAnnounce()?>
+		</table>
         
     </body>
 
