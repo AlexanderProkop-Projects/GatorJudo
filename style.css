@@ -1,18 +1,114 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-  .container {
+
+header{
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(images/guys.png);
+    height: 100vh;
+    background-position:center;
+    background-size: cover;
+}
+
+/* .about header{
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(images/blacksymbol.png);
+    height: 100vh;
+    background-position:center;
+    background-size: 255px;
+} */
+p{
+    font-size: 20px;
+    color: white;
+}
+
+.logo img{
+    float:left;
+    width: 300px;
+    height: auto;
+}
+
+.main{
+    max-width: 1500px;
+    margin: auto;
+}
+
+ul{
+    float: right;
+    list-style-type: none;
+    margin-top: 25px;
+}
+ul li{
+    display: inline-block;
+}
+
+ul li a{
+    text-decoration: none;
+    color: orange;
+    padding: 5px 20px;
+    border: 1px solid transparent;
+    transition: 0.5s ease;
+}
+
+ul li a:hover{
+    background-color: orange;
+    color: black;
+}
+
+.title{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.title h1{
+    color:orange;
+    font-size: 70px;
+}
+
+
+.button{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.btn{
+    border: 2px solid white;
+    padding: 10px 30px;
+    color: orange;
+    text-decoration: none;
+    transition: 0.5s ease;
+
+}
+
+.btn:hover{
+    background-color: orange;
+    color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+  /* .container {
       height: 100vh;
       width: 100%;
-      background-image: url(images/background.png);
+      background-image: url(images/guys.png);
       background-position:left;
       background-size: cover;
       /* padding-left: 5%;
       padding-right: 5%;
       box-sizing: border-box;
       position: relative; */
-  }
+  /* }
 
   .navbar {
       width: 100vh;
@@ -35,10 +131,10 @@
   nav ul li {
       display: inline-block;
       /* list-style: none; */
-      margin: 0px 20px;
+      /* margin: 0px 20px;
   }
 
   nav ul li a {
       text-decoration: none;
       color: #333;
-  }
+  }  */
