@@ -1,5 +1,5 @@
 <?php
-
+    //test
 	//Independent connect function.
 	function connect(){
 		$servername = "localhost";
@@ -49,6 +49,23 @@
 		}*/
 	}
 	
+	function insertAnnouncement($message, $time, $uID){
+        $exist = "SELECT * FROM Announcement WHERE time = " . $time . " AND info = " . $message;
+        $result = qy($exist);
+        
+        if (!$result->fetch_assoc()) {
+            $Insert = "INSERT INTO " . "Announcement " . "(info, time, uID)" . "VALUES (" . $message . ", '" . $time . "', " . $uID . ");";
+            qy($Insert);
+        }
+	}
+	
+	function insertUser($name, $email, $password)
+	{
+        $Insert = "INSERT INTO " . "Users " . "(name, email, password)" . " VALUES (" . $name . ", " . $email . ", " . $password . ");";
+        echo "Inserting User: " . $Insert;
+        qy($Insert);
+	}
+	
 	//Delete
 	function deleteEntry($table, $insert){
 		$parameters = "";
@@ -73,18 +90,26 @@
 		}*/
 	}
 	
-	function displayAnnounce(){ //This function goes right in line where a table would be.
+	function getMaxID(){
+        $sql = "SELECT Max(ID) AS MAX FROM Announcement";
+        $result = qy($sql)->fetch_assoc();
+        return $result['MAX'];	
+	}
+	
+	function displayAnnounce($ID){ //This function goes right in line where a table would be.
 	//This function will probably be greatly overhauled once more work has gone into the html/css.
 		//echo "This is an announce echo.";
-		$sql = "SELECT Users.name, Announcement.title, Announcement.info FROM Users, Announcement where Users.ID = Announcement.uID";
-		$result = qy($sql);
-		while($row = $result->fetch_assoc()){
+		$sql = "SELECT Users.name, Announcement.title, Announcement.info FROM Users, Announcement WHERE Users.ID = Announcement.uID AND Announcement.ID = " . $ID;
+		$result = qy($sql)->fetch_assoc();
+		
+		return array($result['name'], $result['info']);
+		/*while($row = $result->fetch_assoc()){
 			echo "<tr>";
 			echo "<td>" . $row['name'] . "</td>";
 			echo "<td>" . $row['title'] . "</td>";
 			echo "<td>" . $row['info'] . "</td>";
 			echo "</tr>";
-		}
+		}*/
 	}
 
 ?>

@@ -39,8 +39,8 @@
 	//ANNOUNCEMENTS
 	$qy = "create table if not exists Announcement(
 					ID int UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-					title text,
 					info text,
+					time DATETIME,
 					isTournament bool NOT NULL DEFAULT 0,
                     uID int UNSIGNED,
                     FOREIGN KEY (uID) REFERENCES Users (ID)

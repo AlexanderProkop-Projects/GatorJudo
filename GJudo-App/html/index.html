@@ -1,32 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-    <body>
-        <div class="container">
-            <div class="navbar">
-                <img src="../html/images/logo.png" class="logo">
-                <nav>
-                    <ul>
-                        <li><a href="">Home</a></li>
-                        <li><a href="">About</a></li>
-                        <li><a href="">Practice Announcements</a></li>
-                        <li><a href="">Tournaments</a></li>
-                    </ul>
-                </nav>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>UF Gator Judo</title>
+
+        <!-- import stylesheet -->
+        <link rel="stylesheet" href="../html/style.css">
+    
+        <!-- import javascript file -->
+        <script src="script.js" defer></script>
+
+    </head>
+    <body class="index">
+        <header>
+            <div class= "main">
+                <div class="logo">
+                    <img src="../html/images/logo.png">
+                </div>
+
+                <ul>
+                    <li><a href="../html/index.html">Home</a></li>
+                    <li><a href="">Announcements</a></li>
+                    <li><a href="">Tournaments</a></li>
+                    <li><a href="../html/about.html">About</a></li>
+                    <li><a href="../html/contact.html">Contact Us</a></li>
+                    <li><a href="">Admin Login</a></li>
+                </ul>
+
+            </div>
+            <div class="title">
+                <h1 >UF JUDO CLUB</h1>
             </div>
 
-        </div>
+            <div class="button">
+                <a href="#" class="btn">PRACTICE ANNOUNCEMENTS</a>
+            </div>
+            
+            <div class="feed">
+            
+                <div class="post">
+                    <b href="#" class="post">
+                        <?php
+                            //echo test;
+                        ?>
+                    </b>
+                </div>
+                    
+                <?php
+                $index = getMaxID();
+                //echo "index = " . $index;
+                while($index > 0)
+                {?>
+                
+                    <div class="post">
+                        <b href="#" class="post">
+                            <?php
+                                list($name, $message) = displayAnnounce($index);
+                                echo "Announcement: " . $name . " " . $message;
+                                //echo test;
+                                $index = $index - 1;
+                            ?>
+                        </b>
+                    </div>
+                
+                <?php
+                }
+                ?>
+                
+            </div>
+            
+        </header>
+    
 
-		<table> <!-- This is a table that will hold the php announcements -->
-			<tr>
-				<th>ANOUNCEMENT TITLE</th>
-				<th>ANNOUNCEMENT CONTENT</th>
-				<th>ANNOUNCEMENT AUTHOR</th>
-			</tr>
-			<?php displayAnnounce()?>
-		</table>
-        
     </body>
 
 </html>
-
-<!-- /Users/yelainelinares/CENProject/GJudo/index.html -->
