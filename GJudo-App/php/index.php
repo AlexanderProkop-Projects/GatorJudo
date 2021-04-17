@@ -1,11 +1,12 @@
 <?php
-$first = true;
+$first = false;
 
 if($first) {
     echo "Creating Database";
-    //include 'SQL_Structure.php';
+    include 'SQL_Structure.php';
     include 'SQL_Functions.php';
     insertUser("Facebook", "Facebook.com", "no password");
+    defineTag("PRACTICE", "A practice announcement");
 }
 else {
     //This is where the session and cookies will be checked/saved/loaded.

@@ -50,21 +50,43 @@
 	}
 	
 	function insertAnnouncement($message, $time, $uID){
-        $exist = "SELECT * FROM Announcement WHERE time = " . $time . " AND info = " . $message;
+        $exist = "SELECT * FROM Announcement WHERE time = '" . $time . "' AND info = \"" . $message . "\"";
+        //echo "Checking if Announcement Exists: " . $exist;
         $result = qy($exist);
         
         if (!$result->fetch_assoc()) {
-            $Insert = "INSERT INTO " . "Announcement " . "(info, time, uID)" . "VALUES (" . $message . ", '" . $time . "', " . $uID . ");";
+            //echo "The announcement does not exist";
+            $Insert = "INSERT INTO " . "Announcement " . "(info, time, uID)" . " VALUES (\"" . $message . "\", \"" . $time . "\", \"" . $uID . "\");";
+            //echo "Inserting Announcement: " . $Insert;
+            qy($Insert);
+            $result->fetch_assoc();
+        }
+        
+        
+        return $result['ID']
+	}
+	
+	function insertUser($name, $email, $password) {
+        $Insert = "INSERT INTO " . "Users " . "(name, email, password)" . " VALUES (\"" . $name . "\", \"" . $email . "\", \"" . $password . "\");";
+        //echo "Inserting User: " . $Insert;
+        qy($Insert);
+	}
+	
+	function defineTag($name, $descriptor) {
+        $Insert = "INSERT INTO " . "Tags " . "(name, descriptor)" . " VALUES (\"" . $name . "\", \"" . $descriptor . "\");";
+        qy($Insert);
+	}
+	
+	function insertTag($aID, $tagName) {
+        $exist = "SELECT * FROM Define WHERE aID = \"" . $aID . "\" AND tag = \"" . $tagName . "\"";
+        $result = qy($exist);
+    
+        if (!result->fetch_assoc()) {
+            $Insert = "INSERT INTO " . "Define " . "(aID, tag)" . " VALUES (\"" . $aID . "\", \"" . $tagName . "\");";
             qy($Insert);
         }
 	}
 	
-	function insertUser($name, $email, $password)
-	{
-        $Insert = "INSERT INTO " . "Users " . "(name, email, password)" . " VALUES (" . $name . ", " . $email . ", " . $password . ");";
-        echo "Inserting User: " . $Insert;
-        qy($Insert);
-	}
 	
 	//Delete
 	function deleteEntry($table, $insert){
@@ -96,10 +118,10 @@
         return $result['MAX'];	
 	}
 	
-	function displayAnnounce($ID){ //This function goes right in line where a table would be.
+	function getAnnouncement($ID){ //This function goes right in line where a table would be.
 	//This function will probably be greatly overhauled once more work has gone into the html/css.
 		//echo "This is an announce echo.";
-		$sql = "SELECT Users.name, Announcement.title, Announcement.info FROM Users, Announcement WHERE Users.ID = Announcement.uID AND Announcement.ID = " . $ID;
+		$sql = "SELECT Users.name, Announcement.info FROM Users, Announcement WHERE Users.ID = Announcement.uID AND Announcement.ID = " . $ID;
 		$result = qy($sql)->fetch_assoc();
 		
 		return array($result['name'], $result['info']);

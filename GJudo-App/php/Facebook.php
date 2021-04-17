@@ -1,4 +1,3 @@
-?>
 <?php
 use Facebook\Facebook;
 use Facebook\Exceptions\FacebookResponseException;
@@ -17,7 +16,7 @@ $fb = new \Facebook\Facebook([
 
 ]);
 
-$accessToken = 'EAAHIdz5vDd4BAB7CIF1lZB9zWF37BZCcZBm7DfgdTWN5gA9Oaz8RwV0SmIXet1ZA5rq4FBHLlYu9HAQnqAIyyDpwUKD7AIPUVEZC6guHu6jUvry3JV2f78gwyNlaCZBnZC7cujaTJlMcaDAwQSvkM6ZCQnxJ6GTRxn0lsU6e44Nyc9ntCjkNH03Gzg6Fxo9j2nyMiTbZBlWOrWZAafsZAMnI5hkZA7HSnV6hllam2o0X3rw80AZDZD';
+$accessToken = 'EAAHIdz5vDd4BAOGArjFmzbgRzoDDWNhjb6bQZBEgPMdWWCAEYfrYZCMWr7zvFJ8m1uD8ZAuw5TFldYIM1eHjwIJCUEmig9ZBEWN1y6BbEEpo2s6jOC7zah5MW3KCSyNZAKGnpXBIOyZAGYcQF0DYN2SWRgy99lxkso449afGfZA3bwEyvH1lF53evU4XvxhGnuDtb4TwJp3Jnmd2OxrwvNl9ARh4I1Hk7GKLmorufjuNVwn795ZB9gFZA';
 //*/
 
 $postData = "";
@@ -26,7 +25,6 @@ try {
 $gjudo_feed = $fb->get('/1185506478585981/feed', $accessToken);
 $postBody = $gjudo_feed->getDecodedBody();
 $postData = $postBody["data"];
-echo "check3\n";
 } catch (FacebookResponseException $e) {
     echo 'ERROR 1';
     exit();
@@ -45,9 +43,11 @@ date_default_timezone_set('America/New_York');
 
 if (! empty($postData)) {
     foreach ($postData as $k => $v) {
-        $postDate = date("Ymd H:i:s", strtotime($postData[$k]["updated_time"]));
-        insertAnnouncement($postData[$k]["message"], $postDate, 1);
-        
+        $postDate = date("Y-m-d H:i:s", strtotime($postData[$k]["updated_time"]));
+        $ID = insertAnnouncement($postData[$k]["message"], $postDate, 1);
+        if (substr($response['content'],0,15) == 'PRACTICE UPDATE') {
+            insertTag($ID, "PRACTICE");
+        }
     }
 }
 

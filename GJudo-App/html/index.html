@@ -39,33 +39,26 @@
             </div>
             
             <div class="feed">
-            
-                <div class="post">
-                    <b href="#" class="post">
-                        <?php
-                            //echo test;
-                        ?>
-                    </b>
-                </div>
-                    
                 <?php
                 $index = getMaxID();
                 //echo "index = " . $index;
                 while($index > 0)
-                {?>
-                
-                    <div class="post">
-                        <b href="#" class="post">
-                            <?php
-                                list($name, $message) = displayAnnounce($index);
-                                echo "Announcement: " . $name . " " . $message;
-                                //echo test;
-                                $index = $index - 1;
-                            ?>
-                        </b>
-                    </div>
-                
-                <?php
+                {
+                    list($name, $message) = getAnnouncement($index);
+                    if ($message != ""){
+                        ?>
+                        
+                            <div class="post">
+                                <b href="#" class="post">
+                                    <?php
+                                        echo "Announcement: " . $message;
+                                    ?>
+                                </b>
+                            </div>
+                        
+                        <?php
+                    }
+                    $index = $index - 1;
                 }
                 ?>
                 

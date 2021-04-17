@@ -99,8 +99,12 @@ ul li b{
 .feed{
     position: absolute;
     top: 70%;
+    bottom: 0;
     left: 50%;
     transform: translate(-50%, -50%);
+    margin: 10;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 .post{

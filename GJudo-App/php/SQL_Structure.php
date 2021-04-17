@@ -60,14 +60,24 @@
 	
 
 	
-	//
+	//Tags
 	$qy = "create table if not exists Tags(
-			ID int UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-			name text NULL,
+			name text PRIMARY KEY,
 			descriptor text NULL
 			);";
 	
 	qy($qy);	
+	
+	//Tags connected to announcements here
+	$qy = "create table if not exists Define (
+            aId int,
+            tag text,
+            PRIMARY KEY(aID, tag),
+            FOREIGN KEY (aID) REFERENCES Announcement (ID),
+            FOREIGN KEY (tag) REFERENCES Tags
+            );";
+            
+    qy($qy);
 	
 	//Assign foreign keys to uID in Announcement
 	//$qy = "ALTER TABLE Announcement ADD FOREIGN KEY (uID) REFERENCES USERS(ID);";
