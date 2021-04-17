@@ -77,12 +77,12 @@
         qy($Insert);
 	}
 	
-	function insertTag($aID, $tagName) {
+	function insertTag($aID, $tagName, $tagNum) {
         $exist = "SELECT * FROM Define WHERE aID = \"" . $aID . "\" AND tag = \"" . $tagName . "\"";
         $result = qy($exist);
     
         if (!result->fetch_assoc()) {
-            $Insert = "INSERT INTO " . "Define " . "(aID, tag)" . " VALUES (\"" . $aID . "\", \"" . $tagName . "\");";
+            $Insert = "INSERT INTO " . "Define " . "(aID, tag, ID)" . " VALUES (\"" . $aID . "\", \"" . $tagName . "\", \"" . $tagNum . "\");";
             qy($Insert);
         }
 	}

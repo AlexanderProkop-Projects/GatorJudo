@@ -62,7 +62,8 @@
 	
 	//Tags
 	$qy = "create table if not exists Tags(
-			name text PRIMARY KEY,
+            ID int UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+			name text,
 			descriptor text NULL
 			);";
 	
@@ -70,11 +71,11 @@
 	
 	//Tags connected to announcements here
 	$qy = "create table if not exists Define (
-            aId int,
+            ID int UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            aID int UNSIGNED,
             tag text,
-            PRIMARY KEY(aID, tag),
             FOREIGN KEY (aID) REFERENCES Announcement (ID),
-            FOREIGN KEY (tag) REFERENCES Tags
+            FOREIGN KEY (ID) REFERENCES Tags (ID)
             );";
             
     qy($qy);

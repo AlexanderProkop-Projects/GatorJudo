@@ -16,7 +16,7 @@ $fb = new \Facebook\Facebook([
 
 ]);
 
-$accessToken = 'EAAHIdz5vDd4BAOGArjFmzbgRzoDDWNhjb6bQZBEgPMdWWCAEYfrYZCMWr7zvFJ8m1uD8ZAuw5TFldYIM1eHjwIJCUEmig9ZBEWN1y6BbEEpo2s6jOC7zah5MW3KCSyNZAKGnpXBIOyZAGYcQF0DYN2SWRgy99lxkso449afGfZA3bwEyvH1lF53evU4XvxhGnuDtb4TwJp3Jnmd2OxrwvNl9ARh4I1Hk7GKLmorufjuNVwn795ZB9gFZA';
+$accessToken = 'EAAHIdz5vDd4BAPX9iVklTNlNQK8K7ZCggi7k26EDZBjIHoqzkG7yxbRWDYpxPGqx6goUciPzpPN2COtyOm17ivqpW8xgWgiYStiuSZBB40e46lxNCxScJ0e8DEqZCsrpNzBpTZCDZAZABYoH4vngBYwm1amRZAtDzsb4poiZAaciE6Ns7ZA6rKi9YOkByOM9n9zkc1LF5MYzgIW55PdeZCgUvli211n4vqPJqYDAAU5EePn7QZDZD';
 //*/
 
 $postData = "";
@@ -46,7 +46,7 @@ if (! empty($postData)) {
         $postDate = date("Y-m-d H:i:s", strtotime($postData[$k]["updated_time"]));
         $ID = insertAnnouncement($postData[$k]["message"], $postDate, 1);
         if (substr($response['content'],0,15) == 'PRACTICE UPDATE') {
-            insertTag($ID, "PRACTICE");
+            insertTag($ID, "PRACTICE", 1);
         }
     }
 }
