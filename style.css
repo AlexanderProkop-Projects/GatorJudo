@@ -4,33 +4,22 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+.main{
+    max-width: 1500px;
+    margin: auto;
+}
+
 header{
-    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(images/guys.png);
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(images/guys.png);
     height: 100vh;
     background-position:center;
     background-size: cover;
-}
-
-/* .about header{
-    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(images/blacksymbol.png);
-    height: 100vh;
-    background-position:center;
-    background-size: 255px;
-} */
-p{
-    font-size: 20px;
-    color: white;
 }
 
 .logo img{
     float:left;
     width: 300px;
     height: auto;
-}
-
-.main{
-    max-width: 1500px;
-    margin: auto;
 }
 
 ul{
@@ -55,7 +44,7 @@ ul li a:hover{
     color: black;
 }
 
-.title{
+.title, .title-about{
     position: absolute;
     top: 40%;
     left: 50%;
@@ -65,11 +54,53 @@ ul li a:hover{
     color:orange;
     font-size: 70px;
 }
+.title-about h1,.title-contact h1{
+    color: orange;
+    font-size: 80px;
+    text-align: center;
+}
 
+.title-contact{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) 
+}
+
+.title-contact h2{
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+.title-announcement{
+    position: absolute;
+    top: 18%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) 
+}
+.title-announcement h1{
+    color: orange;
+    font-size: 50px;
+    text-align: center;
+}
+
+p{
+    font-size: 20px;
+    color: white;
+}
 
 .button{
     position: absolute;
     top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.button-announcement{
+    position: absolute;
+    top: 25%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -80,61 +111,54 @@ ul li a:hover{
     color: orange;
     text-decoration: none;
     transition: 0.5s ease;
-
+}
+.btn-ann{
+    border: 2px solid white;
+    width: 7px;
+    height: 3px;
+    padding: 8px 8px;
+    color: orange;
+    text-decoration: none;
+    transition: 0.5s ease;
 }
 
-.btn:hover{
+.btn:hover,.btn-ann:hover{
     background-color: orange;
     color: black;
 }
 
-
-
-
-
-
-
-
-
-
-
-  /* .container {
-      height: 100vh;
-      width: 100%;
-      background-image: url(images/guys.png);
-      background-position:left;
-      background-size: cover;
-      /* padding-left: 5%;
-      padding-right: 5%;
-      box-sizing: border-box;
-      position: relative; */
-  /* }
-
-  .navbar {
-      width: 100vh;
-      height: 15vh;
-      margin: auto;
-      display: flex;
-      align-items: center;
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 50%;
+  }
+  
+  .fa:hover {
+      opacity: 0.7;
+  }
+  
+  .fa-facebook {
+    background: #3B5998;
+    color: white;
+  }
+  .fa-instagram {
+    background: #125688;
+    color: white;
+  }
+  .fa-google {
+    background: #dd4b39;
+    color: white;
   }
 
-  .logo {
-      width: 160px;
-      cursor: pointer;
+  .icon {
+    display: flex;
+    justify-content: center;
   }
-
-  nav{
-      flex: 1;
-      padding-left: 60px;
+  
+  .fa icon-right{
+    margin-right: 20px;
   }
-
-  nav ul li {
-      display: inline-block;
-      /* list-style: none; */
-      /* margin: 0px 20px;
-  }
-
-  nav ul li a {
-      text-decoration: none;
-      color: #333;
-  }  */
