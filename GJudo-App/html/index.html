@@ -5,13 +5,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>UF Gator Judo</title>
-
+        
+        
         <!-- import stylesheet -->
         <link rel="stylesheet" href="../html/style.css">
-    
+        
         <!-- import javascript file -->
         <script src="script.js" defer></script>
-
+        
     </head>
     <body class="index">
         <header>
@@ -41,12 +42,11 @@
             <div class="feed">
                 <?php
                 $index = getMaxID();
-                //echo "index = " . $index;
                 while($index > 0)
                 {
                     list($name, $message) = getAnnouncement($index);
                     if ($message != ""){
-                        ?>
+                ?>
                         
                             <div class="post">
                                 <b href="#" class="post">
@@ -56,7 +56,7 @@
                                 </b>
                             </div>
                         
-                        <?php
+                <?php
                     }
                     $index = $index - 1;
                 }
@@ -65,8 +65,7 @@
             </div>
             
         </header>
-    
 
     </body>
-
+    
 </html>

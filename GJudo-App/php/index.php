@@ -12,6 +12,7 @@ else {
     //This is where the session and cookies will be checked/saved/loaded.
 
     echo "Hello World";
+    echo "Root: " . $_SERVER['DOCUMENT_ROOT'];
 
     include 'SQL_Functions.php';
     include 'Facebook.php';
@@ -25,11 +26,12 @@ else {
 
     //include 'Facebook.php';
 
-    //require('../html/head.html'); //This should contain all the header information.
+    //require('../html/index.html');
     
     
-    require('../html/index.html');
+    require($_SERVER['DOCUMENT_ROOT'] . '/GJudo-App/html/index.html');
     
+    echo "just imported index.html";
     
     //deleteEntry("Announcement", "1");
     //deleteEntry("Announcement", "3");

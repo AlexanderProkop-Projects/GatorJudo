@@ -16,7 +16,7 @@ $fb = new \Facebook\Facebook([
 
 ]);
 
-$accessToken = 'EAAHIdz5vDd4BAPX9iVklTNlNQK8K7ZCggi7k26EDZBjIHoqzkG7yxbRWDYpxPGqx6goUciPzpPN2COtyOm17ivqpW8xgWgiYStiuSZBB40e46lxNCxScJ0e8DEqZCsrpNzBpTZCDZAZABYoH4vngBYwm1amRZAtDzsb4poiZAaciE6Ns7ZA6rKi9YOkByOM9n9zkc1LF5MYzgIW55PdeZCgUvli211n4vqPJqYDAAU5EePn7QZDZD';
+$accessToken = 'EAAHIdz5vDd4BAI4x5E524vuafaKpX09SZAgAjG1tJSgXi4lhN5lPpSuj0Snkp4ZAta3XpAq1SubvJHleLZBIO5maPI5ZAZCvuLa0ZBTHJfMgizqdjmP3ODuznA9lCOAALWL1Wreem3wFgxE1iDjDrgljm53uu8smvcBdHyLWTICd1Jbg366SviSN6VkLVHhyw3ZBvrKw7SNJ4z1MZAWoeJqvgMmiZBjZBkmRSiKBz4A3czfQZDZD';
 //*/
 
 $postData = "";
@@ -44,8 +44,11 @@ date_default_timezone_set('America/New_York');
 if (! empty($postData)) {
     foreach ($postData as $k => $v) {
         $postDate = date("Y-m-d H:i:s", strtotime($postData[$k]["updated_time"]));
-        $ID = insertAnnouncement($postData[$k]["message"], $postDate, 1);
-        if (substr($response['content'],0,15) == 'PRACTICE UPDATE') {
+        //echo gettype($postDate);
+        //echo $postData[$k]["message"] . " " . $postDate . " " . 1;
+        $message = $postData[$k]["message"];
+        //$ID = insertAnnouncement($message, $postDate, 1);
+        if (substr($postData["message"],0,15) == 'PRACTICE UPDATE') {
             insertTag($ID, "PRACTICE", 1);
         }
     }
