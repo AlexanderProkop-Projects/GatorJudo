@@ -24,7 +24,7 @@
                 <ul>
                     <li><a href="../html/index.html">Home</a></li>
                     <li><a href="../php/announcement.php">Announcements</a></li>
-                    <li><a href="">Tournaments</a></li>
+                    <li><a href="../php/Tournament.php">Tournaments</a></li>
                     <li><a href="../html/about.html">About</a></li>
                     <li><a href="../html/contact.html">Contact Us</a></li>
                     <li><a href="">Admin Login</a></li>
@@ -36,33 +36,9 @@
             </div>
 
             <div class="button">
-                <a href="#" class="btn">PRACTICE ANNOUNCEMENTS</a>
+                <a href="../php/Practice.php" class="btn">PRACTICE ANNOUNCEMENTS</a>
             </div>
                 
-            <div class="feed">
-                <?php
-                $index = getMaxID();
-                while($index > 0)
-                {
-                    list($name, $message) = getPracticeAnnouncement($index);
-                    if ($message != ""){
-                ?>
-                        
-                            <div class="post">
-                                <b href="#" class="post">
-                                    <?php
-                                        echo "Announcement: " . $message;
-                                    ?>
-                                </b>
-                            </div>
-                            
-                <?php
-                    }
-                    $index = $index - 1;
-                }
-            ?>
-                
-            </div>
         </div>
             
         </header>

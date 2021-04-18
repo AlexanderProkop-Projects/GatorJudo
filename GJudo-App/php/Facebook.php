@@ -16,7 +16,7 @@ $fb = new \Facebook\Facebook([
 
 ]);
 
-$accessToken = 'EAAHIdz5vDd4BAFOl7wJXh8ZB6VlCtGaZBcjISZCqyjtVzmFf0i6mJLFhEfPp6NWkCfq7cX6b27al5OpIPfb7cauZA9h3EqkHymMZA9f05egYtSTzSNYQc3LeZCebY6QbjcSeTkraJnyx5k2AfGU8giSMsWf8IVsiC6Isn9FVh0gCnt01wm2sJsJb7Skusy6lE1qQ6DDJfIZCtkdabhXmKBfMlKhYeSjV2OboTbiBUOVCtmxDulRjUfN';
+$accessToken = 'EAAHIdz5vDd4BAP3yaO2i9SzRHXWrGB1F0qs3af3qbTAuQ6SjwJvqZCj1gOZAe1vlG4xJr3XMqs5ZAXvCetSOYrbFqVPnDATDKFGU8YzNLaO4SYiXHqWW0WzfmEUZBkg7Nnx3N2Rx3phtE2gdsDQ9NdSjhNovZCCNJ2Y1v0iXq5gZDZD';
 //*/
 
 $postData = "";
@@ -63,6 +63,11 @@ if (! empty($postData)) {
         if (substr($message,0,15) == "Practice Update") { //Passes and echoes
             //echo "<br/>PRACTICE<br/>";
             insertTag($ID, "PRACTICE", 1);
+        }
+        
+        else if (substr($message,0,15) == "Tournament Info") { //Passes and echoes
+            //echo "<br/>PRACTICE<br/>";
+            insertTag($ID, "TOURNAMENT", 1);
         }
     }
 }

@@ -1,20 +1,17 @@
 <?php
-$first = false;
 
-if($first) {
-    echo "Creating Database";
-    include 'SQL_Structure.php';
+    //include 'SQL_Structure.php';
     include 'SQL_Functions.php';
     insertUser("Facebook", "Facebook.com", "no password");
     defineTag("PRACTICE", "A practice announcement");
-}
-else {
+    defineTag("TOURNAMENT", "A tournament announcement");
+
     //This is where the session and cookies will be checked/saved/loaded.
 
     //echo "Hello World";
     //echo "Root: " . $_SERVER['DOCUMENT_ROOT'];
 
-    include 'SQL_Functions.php';
+    //include 'SQL_Functions.php';
     include 'Facebook.php';
 
     //insertEntry("Users", "\"Jeff\", \"FAKE_EMAIL@AOL.COM\", \"password\"");
@@ -39,7 +36,6 @@ else {
     //deleteEntry("Users", "'Dale'");
     //deleteEntry("Users", "'Chad'");
     //require('./PHP-MySQL-CLOSE.php'); //This should close any open database connection (if needed).
-}
 
 
 

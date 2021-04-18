@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -33,15 +33,15 @@
             </div>
 
             <div class="title">
-                <a href="../php/Practice.php" class="btn">PRACTICE ANNOUNCEMENTS</a>
+                <a href="../php/announcement.php" class="btn">ALL ANNOUNCEMENTS</a>
             </div>
-            
+                
             <div class="feed">
                 <?php
                 $index = getMaxID();
                 while($index > 0)
                 {
-                    list($name, $message, $time) = getAnnouncement($index);
+                    list($name, $message, $time) = getTournamentAnnouncement($index);
                     if ($message != ""){
                 ?>
                         
@@ -52,12 +52,12 @@
                                     ?>
                                 </b>
                             </div>
-                                
+                            
                 <?php
                     }
                     $index = $index - 1;
                 }
-                ?>
+            ?>
                 
             </div>
         </div>

@@ -7,10 +7,10 @@
 	function qy($sql){
 		$conn = new mysqli($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['dbname']) or die("Connection failed: " . $conn->connect_error());
 		if($conn->query($sql) == true){
-			echo "success <br>";
+			//echo "success <br>";
 		}
 		else{
-			echo "ERROR: " . $conn->error . "<br>";
+			//echo "ERROR: " . $conn->error . "<br>";
 		}
 		$conn->close();
 	}

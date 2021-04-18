@@ -2,6 +2,6 @@
 
 include 'SQL_Functions.php';
 include 'Facebook.php';
-require('../html/announcement.html');
+require('../html/Tournament.html');
 
-?>
+?>  
