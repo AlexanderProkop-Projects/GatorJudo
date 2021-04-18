@@ -59,11 +59,13 @@
             $Insert = "INSERT INTO " . "Announcement " . "(info, time, uID)" . " VALUES (\"" . $message . "\", \"" . $time . "\", \"" . $uID . "\");";
             //echo "Inserting Announcement: " . $Insert;
             qy($Insert);
-            $result->fetch_assoc();
         }
         
-        
-        return $result['ID'];
+        $findID = "SELECT ID FROM Announcement WHERE time = '" . $time . "' AND info = \"" . $message . "\"";
+        $result2 = qy($findID)->fetch_assoc();
+        $ID = $result2['ID'];
+        //return $result['ID'];*/
+        return $ID;
 	}
 	
 	function insertUser($name, $email, $password) {
@@ -132,6 +134,18 @@
 			echo "<td>" . $row['info'] . "</td>";
 			echo "</tr>";
 		}*/
+	}
+	
+    function getPracticeAnnouncement($ID){
+
+		$sql = "SELECT name, Announcement.info, Announcement.time
+                FROM Announcement JOIN Users JOIN Define
+                WHERE Announcement.uID = Users.ID AND Announcement.ID = Define.aID AND tag = \"Practice\" AND Announcement.ID = " . $ID;
+                
+		$result = qy($sql)->fetch_assoc();
+		
+		return array($result['name'], $result['info']);
+
 	}
 
 ?>

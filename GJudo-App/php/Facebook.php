@@ -16,7 +16,7 @@ $fb = new \Facebook\Facebook([
 
 ]);
 
-$accessToken = 'EAAHIdz5vDd4BAI4x5E524vuafaKpX09SZAgAjG1tJSgXi4lhN5lPpSuj0Snkp4ZAta3XpAq1SubvJHleLZBIO5maPI5ZAZCvuLa0ZBTHJfMgizqdjmP3ODuznA9lCOAALWL1Wreem3wFgxE1iDjDrgljm53uu8smvcBdHyLWTICd1Jbg366SviSN6VkLVHhyw3ZBvrKw7SNJ4z1MZAWoeJqvgMmiZBjZBkmRSiKBz4A3czfQZDZD';
+$accessToken = 'EAAHIdz5vDd4BAFOl7wJXh8ZB6VlCtGaZBcjISZCqyjtVzmFf0i6mJLFhEfPp6NWkCfq7cX6b27al5OpIPfb7cauZA9h3EqkHymMZA9f05egYtSTzSNYQc3LeZCebY6QbjcSeTkraJnyx5k2AfGU8giSMsWf8IVsiC6Isn9FVh0gCnt01wm2sJsJb7Skusy6lE1qQ6DDJfIZCtkdabhXmKBfMlKhYeSjV2OboTbiBUOVCtmxDulRjUfN';
 //*/
 
 $postData = "";
@@ -44,11 +44,24 @@ date_default_timezone_set('America/New_York');
 if (! empty($postData)) {
     foreach ($postData as $k => $v) {
         $postDate = date("Y-m-d H:i:s", strtotime($postData[$k]["updated_time"]));
-        //echo gettype($postDate);
-        //echo $postData[$k]["message"] . " " . $postDate . " " . 1;
-        $message = $postData[$k]["message"];
-        //$ID = insertAnnouncement($message, $postDate, 1);
-        if (substr($postData["message"],0,15) == 'PRACTICE UPDATE') {
+        $keys = array_keys($postData[$k]);
+        
+        /*if("message" == $keys[1]){
+            echo "The stirngs are equal, WTF?"; //This prints.
+        }*/
+        $message = $postData[$k][$keys[1]];
+        
+        //echo "Message: " . $message . ", Date: " . $postDate;
+        
+
+        //$test1 = "test";
+        //$test2 = "2021-04-16 22:24:07";
+        
+        //$message = substr($k[]$v["message"],0,15);
+        //echo $message . "<br/>";
+        $ID = insertAnnouncement($message, $postDate, 1);
+        if (substr($message,0,15) == "Practice Update") { //Passes and echoes
+            //echo "<br/>PRACTICE<br/>";
             insertTag($ID, "PRACTICE", 1);
         }
     }
