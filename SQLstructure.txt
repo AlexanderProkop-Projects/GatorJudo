@@ -1,0 +1,205 @@
+/*---------------------------------------------CREATE TABLES---------------------------------------------*/
+create table Announcement(
+ID int PRIMARY KEY,
+uID int,
+info text,
+day date
+);
+
+create table Tournament (
+ID int PRIMARY KEY
+);
+
+create table Tag (
+tag text PRIMARY KEY
+);
+
+create table Link (
+URL text PRIMARY KEY,
+name text
+);
+
+create table Reply (
+ID int PRIMARY KEY,
+uID int,
+aID int,
+info text,
+day date
+);
+
+create table User (
+ID int PRIMARY KEY,
+name text,
+email text,
+password text
+);
+
+create table Cookie (
+ID int PRIMARY KEY,
+uID int
+);
+
+create table Define (
+aId int,
+tag text,
+PRIMARY KEY(aID, tag)
+);
+
+create table LinksTo (
+tID int,
+URL text,
+PRIMARY KEY(tID, URL)
+);
+
+
+/*---------------------------------------------INSERTIONS---------------------------------------------*/
+
+
+/* We have to define the tags. I think this only has to be done once but I'm not sure where it would be done */
+insert into Tag values("Practice");
+insert into Tag values("Tournament");
+
+
+
+/* For SignUp we need to insert a new user */
+int* lastuID =              //note, I'm not really sure what structure the output has, I'm just assuming it's a pointer for this example, but it may need to be changed a little bit. 
+    SELECT Max(ID)
+    FROM User;
+
+string username;            //These are defined by the user in textboxes, not sure how it will get to the database though so I am just assuming it is defined
+string password;            
+string email;
+
+insert into User values(lastuID[0] + 1, username, email, password);
+
+
+
+/* If a user clicks save username/password (forgot to add this to wireframe) we need to add a cookie) */
+int cookieID;               //don't know where we get this
+int uID;                    //whatever the current user's id is
+
+insert into Cookie values(cookieID, uID)
+
+
+
+/* When adding an announcement we have to do something like the following, again not sure how the values will be input so I just assume they are defined (they should come either from facebook or from an admin input) */
+int* lastaID =
+    SELECT Max(ID)
+    FROM Announcement;
+
+int userID;                 //not really sure how we get this. If it's from the admin panel it should be easy. If it's from facebook we might have to either create a User or maybe we can somehow link peoples accounts to their facebook accounts.
+string text;
+string date;
+bool* tags;                 //index 0 for Practice Tag, index 1 for Tournament Tag, we might end up having some different structure, but this is just an example of how it could be done.
+pair* links;                //I forget how to impliment pairs exactly, but basically this is an array with the links, each link having a url (first) and a name (second).
+int numLinks;
+    
+insert into Announcement values(lastaID+1, userID, text, date);
+
+if(tags[0])         //if the announcement is practice announcement
+    insert into Define values(lastaID+1, "Practice");
+    
+if(tags[1])         //if the announcement is a tournament announcement
+{
+    insert into Define values(lastaID+1, "Tournament");
+    for (int i = 0; i < numLinks; i++)
+    {
+        insert into Link values(links[i].first, links[i].second);
+        insert into LinksTo values(lastaID+1, links[i].first);
+    }
+}
+
+
+
+/* When adding replies we do the following */
+int lastrID = 
+    SELECT Max(ID)
+    FROM Reply;
+    
+int uID;        //whatever the current User's ID is
+int aID;        //ID of the announcement which the reply is under
+string text;
+string date;
+
+insert into Reply values(lastrID+1, uID, aID, text, date);
+
+
+
+
+
+/*---------------------------------------------QUERIES---------------------------------------------*/
+/* If we want the ID, author username, text, date and number of replies for all announcements: */
+SELECT Announcement.ID, name, Announcement.info, Announcement.day, Count(Reply.rID) AS NumReplies
+FROM Announcement JOIN User LEFT OUTER JOIN Reply ON Announcement.ID = Reply.aID
+WHERE Announcement.uID = User.ID
+GROUP BY Announcement.ID, name, Announcement.info, Announcement.day;
+
+
+
+/* If we want the ID, author username, text, and date (and num Replies) of only practice announcements: */
+SELECT Announcement.ID, name, Announcement.info, Announcement.day, Count(Reply.rID) AS NumReplies
+FROM Announcement JOIN User JOIN Define LEFT OUTER JOIN Reply ON Announcement.ID = Reply.aID
+WHERE Announcement.uID = User.ID AND Announcement.ID = Define.aID AND tag = "Practice"
+GROUP BY Announcement.ID, name, Announcement.info, Announcement.day;
+
+
+
+/* If we want the ID, author username, text, date, and links or tournament announcements (and num Replies): (note this will have n seperate entries for a tournament with n links, each entry having a different link. If this doesn't work out I can try to have 1 entry per announcement with all the links in that entry, it will just be a bit more complicated */
+SELECT Announcement.ID, User.name, Announcement.info, Announcement.day, Link.URL, Link.name, Count(Reply.rID) AS NumReplies 
+FROM Announcement JOIN User JOIN Define JOIN LinksTo JOIN Link LEFT OUTER JOIN Reply ON Announcement.ID = Reply.aID
+WHERE Announcement.uID = User.ID AND Announcement.ID = Define.aID AND tag = "Tournament" AND Announcement.ID = Linksto.tID AND LinksTo.url = Link.url
+GROUP BY Announcement.ID, User.name, Announcement.info, Announcement.day, Link.URL, Link.name;
+
+
+
+/* If we want the reply ID, author name (of reply), text, and date for all the replies for a certain announcement (given the announcement ID in variable aID): (it is easy to get this for all announcements by just removing one part) */
+SELECT Reply.ID, name, Reply.info, Reply.day
+FROM Announcement AND Reply AND User
+WHERE Announcement.ID = aID (given variable) AND Reply.aID = Announcement.ID AND Reply.uID = User.ID;
+
+
+
+/* If we want the username and email for all users, we do the following: */
+SELECT name, email
+FROM User;
+
+
+
+/* If we want to find the user ID for a given username + password do the following (is empty if it doesn't exist): */
+SELECT ID
+FROM User;
+WHERE name = username (given variable) AND password = pswd (given variable);
+
+
+
+/* If we want to find the user ID for a certain cookie ID we do the following (empty if doesn't exist): */
+SELECT uID
+FROM Cookie;
+WHERE Cookie.ID = cookie (given variable)
+
+
+
+
+
+/*---------------------------------------------UPDATE VALUES---------------------------------------------*/
+/* If a user updates their profile we do the following (given newUsername, newPassword, newEmail, userID): */
+UPDATE User
+SET name = newUsername, password = newPassword, email = newEmail
+WHERE ID = userID;
+
+
+
+/* If an admin adds a tag (with string newtag and aID (the announcement) which is either "Practice" or "Tournament"): (I believe it will throw an error if the tag already exist, but it should still run)*/
+Insert into Define values(aID, newtag);
+
+/* If an admin deletes an announcement with int deleteID as the announcements ID: */
+DELETE FROM Announcement
+WHERE ID = deleteID;
+
+/* If an admin deletes a reply with int deleteID as the announcements ID: */
+DELETE FROM Reply
+WHERE ID = deleteID;
+
+/* If an admin deletes a user with int deleteID as the announcements ID: */
+DELETE FROM User
+WHERE ID = deleteID;
