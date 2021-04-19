@@ -1,7 +1,7 @@
 <?php
 
     //include 'SQL_Structure.php';
-    include_once("home.html");
+    
     include 'SQL_Functions.php';
     insertUser("Facebook", "Facebook.com", "no password");
     defineTag("PRACTICE", "A practice announcement");
@@ -28,7 +28,7 @@
     
     
     require('../html/index.html');
-    
+    include_once("home.html");
     //echo "just imported index.html";
     
     //deleteEntry("Announcement", "1");
