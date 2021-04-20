@@ -1,8 +1,8 @@
 <?php
 
     //include 'SQL_Structure.php';
-    include_once('../GJudo-App/html/home.html');
-    include 'SQL_Functions.php';
+    include_once('GJudo-App/html/home.html');
+    include 'GJudo-App/php/SQL_Functions.php';
     insertUser("Facebook", "Facebook.com", "no password");
     defineTag("PRACTICE", "A practice announcement");
     defineTag("TOURNAMENT", "A tournament announcement");
@@ -13,7 +13,7 @@
     //echo "Root: " . $_SERVER['DOCUMENT_ROOT'];
 
     //include 'SQL_Functions.php';
-    include '../GJudo-App/php/Facebook.php';
+    include 'GJudo-App/php/Facebook.php';
 
     //insertEntry("Users", "\"Jeff\", \"FAKE_EMAIL@AOL.COM\", \"password\"");
     //insertEntry("Users", "\"Dale\", \"ITSDALE@AOL.COM\", \"password\"");
@@ -27,7 +27,7 @@
     //require('../html/index.html');
     
     
-    require('../GJudo-App/html/home.html');
+    require('GJudo-App/html/home.html');
     
     //echo "just imported index.html";
     
