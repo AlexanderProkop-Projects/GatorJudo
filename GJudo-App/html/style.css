@@ -10,7 +10,7 @@
 }
 
 header{
-    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(public/images/guys.png);
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(images/guys.png);
     height: 100vh;
     background-position:center;
     background-size: cover;
