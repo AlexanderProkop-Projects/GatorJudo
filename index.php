@@ -1,7 +1,7 @@
 <?php
 
     //include 'SQL_Structure.php';
-    include_once('GJudo-App/html/home.html');
+    include_once('GJudo-App/html/index.html');
     include 'GJudo-App/php/SQL_Functions.php';
     insertUser("Facebook", "Facebook.com", "no password");
     defineTag("PRACTICE", "A practice announcement");
@@ -27,7 +27,7 @@
     //require('../html/index.html');
     
     
-    require('GJudo-App/html/home.html');
+    require('GJudo-App/html/index.html');
     
     //echo "just imported index.html";
     
