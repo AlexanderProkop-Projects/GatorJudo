@@ -6,8 +6,8 @@
 	$port = "5432";
 	
 	function qy($sql){
-		//$conn = new mysqli($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['dbname']) or die("Connection failed: " . $conn->connect_error());
-		$conn = "dbname=" . $GLOBALS['dbname'] . "host=" . $GLOBALS['servername'] . "port=" . $GLOBALS['port'] . "user=" . $GLOBALS['username'] . "password=" . $GLOBALS['password'] . "sslmode=require";
+		$conn = new mysqli($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['dbname']) or die("Connection failed: " . $conn->connect_error());
+		//$conn = "dbname=" . $GLOBALS['dbname'] . "host=" . $GLOBALS['servername'] . "port=" . $GLOBALS['port'] . "user=" . $GLOBALS['username'] . "password=" . $GLOBALS['password'] . "sslmode=require";
 		if($conn->query($sql) == true){
 			//echo "success <br>";
 		}
