@@ -15,7 +15,7 @@
 		$conn = connect();
 		$result = $conn->query($sql);
 		if($result === FALSE){
-			echo "ERROR: " . $conn->error . "<br>";
+			echo "ERROR HERE: " . $conn->error . "<br>";
 		}
 		$conn->close();
 		return $result;
