@@ -3,7 +3,7 @@ echo "INDEX";
     //include 'SQL_Structure.php
 	include_once('index.html');
    include 'SQL_Functions.php';
-   ///insertUser("Facebook", "Facebook.com", "no password");
+   insertUser("Facebook", "Facebook.com", "no password");
     ///defineTag("PRACTICE", "A practice announcement");
    ////defineTag("TOURNAMENT", "A tournament announcement");
 
