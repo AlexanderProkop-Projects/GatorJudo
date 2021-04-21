@@ -1,5 +1,5 @@
 <?php
-
+echo "INDEX";
     //include 'SQL_Structure.php
 	//include_once('index.html');
     //include 'SQL_Functions.php';
