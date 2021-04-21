@@ -34,6 +34,7 @@ $postData = $postBody["data"];
     exit();
 }
 
+        var_dump($postData);
 
 if (empty($postData))
 {
@@ -53,7 +54,6 @@ if (! empty($postData)) {
         $message = $postData[$k][$keys[1]];
         
         echo "Message: " . $message . ", Date: " . $postDate;
-        var_dump($postData);
         
 
         //$test1 = "test";
