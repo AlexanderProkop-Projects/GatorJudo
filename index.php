@@ -1,7 +1,6 @@
 <?php
 
-    //include 'SQL_Structure.php';
-echo "TESTING";
+    //include 'SQL_Structure.php
 	include_once('index.html');
     include 'SQL_Functions.php';
     insertUser("Facebook", "Facebook.com", "no password");
