@@ -2,10 +2,10 @@
 echo "INDEX";
     //include 'SQL_Structure.php
 	///include_once('index.html');
-   / //include 'SQL_Functions.php';
-   / //insertUser("Facebook", "Facebook.com", "no password");
+   ////include 'SQL_Functions.php';
+   ///insertUser("Facebook", "Facebook.com", "no password");
     ///defineTag("PRACTICE", "A practice announcement");
-   / //defineTag("TOURNAMENT", "A tournament announcement");
+   ////defineTag("TOURNAMENT", "A tournament announcement");
 
     //This is where the session and cookies will be checked/saved/loaded.
 
@@ -27,7 +27,7 @@ echo "INDEX";
     //require('../html/index.html');
     
     
-    require('index.html');
+    //require('index.html');
     
     //echo "just imported index.html";
     
