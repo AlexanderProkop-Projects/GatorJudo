@@ -40,7 +40,7 @@ if (empty($postData))
 }
 
 date_default_timezone_set('America/New_York');
-
+echo "TESTING";
 if (! empty($postData)) {
     foreach ($postData as $k => $v) {
         $postDate = date("Y-m-d H:i:s", strtotime($postData[$k]["updated_time"]));
