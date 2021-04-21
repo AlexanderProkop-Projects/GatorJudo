@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -18,7 +18,7 @@
         <header>
             <div class= "main">
                 <div class="logo">
-                    <img src="GJudo-App/html/images/logo.png">
+                    <img src="images/logo.png">
                 </div>
 
                 <ul>
@@ -31,14 +31,35 @@
                 </ul>
 
             </div>
-            <div class="title">
-                <h1 >UF JUDO CLUB</h1>
-            </div>
 
-            <div class="button">
-                <a href="Practice.php" class="btn">PRACTICE ANNOUNCEMENTS</a>
+            <div class="title">
+                <a href="announcement.php" class="btn">ALL ANNOUNCEMENTS</a>
             </div>
                 
+            <div class="feed">
+                <?php
+                $index = getMaxID();
+                while($index > 0)
+                {
+                    list($name, $message, $time) = getTournamentAnnouncement($index);
+                    if ($message != ""){
+                ?>
+                        
+                            <div class="post">
+                                <b href="#" class="post">
+                                    <?php
+                                        echo $message . " " . substr($time,0,10);
+                                    ?>
+                                </b>
+                            </div>
+                            
+                <?php
+                    }
+                    $index = $index - 1;
+                }
+            ?>
+                
+            </div>
         </div>
             
         </header>
