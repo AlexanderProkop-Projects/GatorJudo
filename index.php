@@ -27,7 +27,7 @@ echo "INDEX";
     //require('../html/index.html');
     
     
-    ///require('index.html');
+    require('index.html');
     
     //echo "just imported index.html";
     
