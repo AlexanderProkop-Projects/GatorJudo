@@ -6,7 +6,7 @@
 	$username = "xypisuxydtogno";
 	$password = "55f3337c8fa1704a8c5419595288b25f7eac164d1180d4852daa97e9727caef4";
 	$dbname = "d3ru2ith95uu4r";
-		return new pg_connect($servername, $username, $password, $dbname);
+		return pg_connect($servername, $username, $password, $dbname);
 	}
 	
 	//Function to remove writing the same if statement all the time.
