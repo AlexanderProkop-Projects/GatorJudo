@@ -1,11 +1,13 @@
 <?php
-	$servername = "localhost";
-	$username = "root";
-	$password = "root";
-	$dbname = "gatorjudo";
+	$servername = "ec2-34-225-103-117.compute-1.amazonaws.com";
+	$username = "xypisuxydtogno";
+	$password = "55f3337c8fa1704a8c5419595288b25f7eac164d1180d4852daa97e9727caef4";
+	$dbname = "d3ru2ith95uu4r";
+	$port = "5432";
 	
 	function qy($sql){
-		$conn = new mysqli($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['dbname']) or die("Connection failed: " . $conn->connect_error());
+		//$conn = new mysqli($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['dbname']) or die("Connection failed: " . $conn->connect_error());
+		$conn = "dbname=" . $GLOBALS['dbname'] . "host=" . $GLOBALS['servername'] . "port=" . $GLOBALS['port'] . "user=" . $GLOBALS['username'] . "password=" . $GLOBALS['password'] . "sslmode=require";
 		if($conn->query($sql) == true){
 			//echo "success <br>";
 		}
