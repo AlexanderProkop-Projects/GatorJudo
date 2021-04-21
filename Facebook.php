@@ -4,10 +4,10 @@ use Facebook\Facebook;
 use Facebook\Exceptions\FacebookResponseException;
 use Facebook\Exceptions\FacebookSDKException;
 
-require_once 'vendor/facebook/graph-sdk/src/Facebook/autoload.php';
-require_once 'vendor/facebook/graph-sdk/src/Facebook/Exceptions/FacebookResponseException.php';
-require_once 'vendor/facebook/graph-sdk/src/Facebook/Exceptions/FacebookSDKException.php';
-require_once 'vendor/facebook/graph-sdk/src/Facebook/Helpers/FacebookRedirectLoginHelper.php';
+require_once './vendor/facebook/graph-sdk/src/Facebook/autoload.php';
+require_once './vendor/facebook/graph-sdk/src/Facebook/Exceptions/FacebookResponseException.php';
+require_once './vendor/facebook/graph-sdk/src/Facebook/Exceptions/FacebookSDKException.php';
+require_once './vendor/facebook/graph-sdk/src/Facebook/Helpers/FacebookRedirectLoginHelper.php';
 
 
 $fb = new \Facebook\Facebook([
