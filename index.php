@@ -13,7 +13,6 @@
     //echo "Root: " . $_SERVER['DOCUMENT_ROOT'];
 
     //include 'SQL_Functions.php';
-include_once('Facebook.php');
     include 'Facebook.php';
 
     //insertEntry("Users", "\"Jeff\", \"FAKE_EMAIL@AOL.COM\", \"password\"");
