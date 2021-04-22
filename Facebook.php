@@ -53,7 +53,7 @@ if (! empty($postData)) {
         }*/
         $message = $postData[$k][$keys[1]];
         
-        echo "Message: " . $message . ", Date: " . $postDate;
+        //echo "Message: " . $message . ", Date: " . $postDate;
         
 
         //$test1 = "test";
@@ -61,8 +61,8 @@ if (! empty($postData)) {
         
         //$message = substr($k[]$v["message"],0,15);
         //echo $message . "<br/>";
-        //$ID = insertAnnouncement($message, $postDate, 1);
-        /*if (substr($message,0,15) == "Practice Update") { //Passes and echoes
+        $ID = insertAnnouncement($message, $postDate, 1);
+        if (substr($message,0,15) == "Practice Update") { //Passes and echoes
             //echo "<br/>PRACTICE<br/>";
             insertTag($ID, "PRACTICE", 1);
         }
@@ -70,7 +70,7 @@ if (! empty($postData)) {
         else if (substr($message,0,15) == "Tournament Info") { //Passes and echoes
             //echo "<br/>PRACTICE<br/>";
             insertTag($ID, "TOURNAMENT", 1);
-        }*/
+        }
    
     }
 }
